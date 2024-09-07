@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <?php
+    <?php 
     echo "hello workl";
     ?>
 </body>

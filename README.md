@@ -1,2 +1,2 @@
 # Bus-Station
-From Ethiopia Tepi town  Bus station
+For Ethiopia country Tepi town  Bus station

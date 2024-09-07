@@ -1,0 +1,92 @@
+html
+<style>
+/* Existing styles... */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    border: 1px solid #ccc;
+    z-index: 1;
+}
+
+.dropdown-content .dropdown-item {
+    padding: 12px 16px;
+    cursor: pointer;
+}
+
+.dropdown-content .dropdown-item:hover {
+    background-color: #f1f1f1;
+}
+</style>
+
+<div class="overlay">
+    <center>
+        <b><p style="color:black; font-size:57px;"> Welcome!!</p> 
+        <h1>Dear Passenger! You want to travel now, Book here!</h1></b>
+    </center>
+    <br><br>
+    <input type="text" placeholder="From/Departure"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <div class="dropdown">
+        <input type="text" id="destinationInput" placeholder="To/Destination" onkeyup="filterDestinations()">
+        <div id="dropdownList" class="dropdown-content">
+            <div class="dropdown-item">New York</div>
+            <div class="dropdown-item">Los Angeles</div>
+            <div class="dropdown-item">Chicago</div>
+            <div class="dropdown-item">Houston</div>
+            <div class="dropdown-item">Phoenix</div>
+            <!-- Add more options as needed -->
+        </div>
+    </div>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="date" placeholder="DD/MM/YY">
+    <input type="search">Search
+</div>
+
+<script>
+// Existing video speed code...
+
+function filterDestinations() {
+    var input, filter, div, items, i, txtValue;
+    input = document.getElementById('destinationInput');
+    filter = input.value.toUpperCase();
+    div = document.getElementById("dropdownList");
+    items = div.getElementsByClassName('dropdown-item');
+
+    if (filter) {
+        div.style.display = "block";
+    } else {
+        div.style.display = "none";
+    }
+
+    for (i = 0; i < items.length; i++) {
+        txtValue = items[i].textContent || items[i].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            items[i].style.display = "";
+        } else {
+            items[i].style.display = "none";
+        }
+    }
+
+    if (!Array.from(items).some(item => item.style.display !== "none")) {
+        div.style.display = "none";
+    }
+}
+
+window.onclick = function(event) {
+    if (!event.target.matches('#destinationInput')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        for (var i = 0; i < dropdowns.length; i++) {
+            dropdowns[i].style.display = "none";
+        }
+    }
+}
+</script>
+</html>

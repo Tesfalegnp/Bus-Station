@@ -13,6 +13,8 @@
             margin:2px;
             border: 2px solid black;
             text-align: center;
+        }.tabl3{
+
         }
         #tth td{
             border: 2px solid black;  
@@ -30,7 +32,7 @@
     include('Config.php');
     ?>
 <body>
-<center>
+<!-- <center> -->
     <h1>All Association Managers Data</h1>
     <table class="tabl">
         <th id="tth"> 
@@ -44,26 +46,28 @@
             <td>Update</td>
             <td>Delete</td>
         </th>
+        <form action="Association_update.php" method="POST">
         <tbody id="ttbody">
             <?php
             $roll_start=1;
     $sql = "SELECT * FROM association";
     $result = $db->query($sql);
-   if ($result->num_rows > 0) {
+   if ($result->num_rows > 0) 
+   {
       // output data of each row
+
       while($row = $result->fetch_assoc()) {
         ?>
         <tr class="tabl3">
-            <td><?php ?></td>
-            <td><?php echo $roll_start; ?></td>
-            <td><?php echo $row['firstname']?></td>
-            <td><?php echo $row['lastname']?></td>
-            <td><?php echo $row['phonenumber']?></td>
-            <td><?php echo $row['email']?></td>
-            <td><?php echo $row['username']?></td>
-            <td><?php echo $row['gender']?></td>
-            <td><?php echo $row['gender']?></td>
-            <td><?php echo $row['password']?></td>
+            <td> </td>
+            <td> <input type="text" name="<?php $row['id'];?>" value="<?php echo $roll_start; ?>" disabled> </td>
+            <td><input type="text" name="firstname" value="<?php  $row['firstname']; ?>"> </td>
+            <td><input type="text" name="lastname" values="<?php echo $row['lastname']?>"> </td>
+            <td><input type="number" name="phonenumber" value="<?php echo $row['phonenumber']?>"></td>
+            <td><input type="email" name="email" value="<?php echo $row['email']?>"></td>
+            <td><input type="text" name="username" value="<?php echo $row['username']?>"></td>
+            <td><input type="text" name="gander" value="<?php echo $row['gender']?>"></td>
+            <td><input type="text" name="password" value="<?php echo $row['password']?>"> </td>
             </tr>
               <?php
         $roll_start=$roll_start+1;
@@ -72,8 +76,10 @@
     $db->close(); 
         // </tbody>
         // </table>
-        // </center>
+    //</center>
         ?>
+        <center><input type="submit" valeu="Enter"></center>          
+        </form>
         </body>
 </html>
 
